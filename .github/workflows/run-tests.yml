@@ -26,9 +26,11 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
+        working-directory: ./ReportPortal
         run: dotnet restore
 
       - name: Build solution
+        working-directory: ./ReportPortal
         run: dotnet build --configuration Release --no-restore
 
       - name: Create appsettings.json from secrets
