@@ -61,3 +61,6 @@ nunit-*.xml
 *.assets.json
 *.packagespec.json
 *.AssemblyInfo.cs
+
+# OS
+.DS_Store
