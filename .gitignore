@@ -52,3 +52,10 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Rider
+.idea/
+*.sln.iml
+*.cache
+*.restore.info
+*.AssemblyInfoInputs.cache
