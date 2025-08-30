@@ -53,7 +53,7 @@ jobs:
                 {
                   \"Name\": \"File\",
                   \"Args\": {
-                    \"path\": \"logs/logfile.log\",
+                    \"path\": \"${{ github.workspace }}/logs/logfile.log\",
                     \"restrictedToMinimumLevel\": \"Information\"
                   }
                 }
@@ -65,10 +65,14 @@ jobs:
         run: dotnet test --configuration Release --logger "console;verbosity=detailed" --logger "trx;LogFileName=test-results.trx"
 
       - name: Upload logs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: logs
           path: ./logs/logfile.log
+
+      - name: List Release folder
+        run: ls -lah ./bin/Release/net8.0/
 
       - name: Upload Extent Report
         uses: actions/upload-artifact@v4
