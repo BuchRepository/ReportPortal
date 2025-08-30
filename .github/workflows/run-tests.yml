@@ -20,20 +20,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: List repo files
-        run: ls -R
-
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        working-directory: ./ReportPortal
         run: dotnet restore
 
       - name: Build solution
-        working-directory: ./ReportPortal
         run: dotnet build --configuration Release --no-restore
 
       - name: Create appsettings.json from secrets
@@ -73,14 +68,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: logs
-          path: ./ReportPortal/logs/logfile.log
-
-
-      - name: List files in Release folder
-        run: ls -lah ./ReportPortal/bin/Release/net8.0/
+          path: ./logs/logfile.log
 
       - name: Upload Extent Report
         uses: actions/upload-artifact@v4
         with:
           name: extent-report
-          path: ./ReportPortal/bin/Release/net8.0/index.html
+          path: ./bin/Release/net8.0/index.html
