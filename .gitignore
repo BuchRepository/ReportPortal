@@ -59,3 +59,6 @@ nunit-*.xml
 *.cache
 *.restore.info
 *.AssemblyInfoInputs.cache
+
+# macOS system files
+.DS_Store
